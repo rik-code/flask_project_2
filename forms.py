@@ -8,6 +8,18 @@ class StudentForm(FlaskForm):
                        validators=[DataRequired()])
     birth_date = DateField('Birth date: ',
                            validators=[DataRequired()])
+
     mark = FloatField('Mark: ')
     # TODO: SelectMultipleField for subject_id field
-    status = StringField('')
+    status = SelectField('Learning status',
+                         choices=[
+                             ('free', 'Free'),
+                             ('pay', 'Paid')
+                         ])
+    submit = SubmitField('Add')
+
+
+class SubjectForm(FlaskForm):
+    name = StringField('Subject\'s name: ',
+                       validators=[DataRequired()])
+    submit = SubmitField('Add')
