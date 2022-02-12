@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% blok content %}
+
+    <h1>Add student</h1>
+    <form action="" method="post">
+        <p>
+            {{ form.name.label }}
+            {{ form.name }}
+        </p>
+        <p>
+            {{ form.birth_date.label }}
+            {{ form.birth_date }}
+        </p>
+        <p>
+            {{ form.mark.label }}
+            {{ form.mark }}
+        </p>
+        <p>
+            {{ form.status.label }}
+            {{ form.status }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+
+{% endblock %}
