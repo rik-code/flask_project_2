@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, redirect, url_for
 from app import app, db
 from forms import StudentForm, SubjectForm
 from models import Subjects, Students
@@ -14,11 +14,14 @@ def add_student():
     form = StudentForm()
     if form.validate_on_submit():
         student = Students(
-            name=form['name'],
-            birth_date=form['birth_date'],
-            mark=form['mark'],
-            status=form['status']
+            name=form.name.data,
+            birth_date=form.birth_date.data,
+            mark=form.mark.data,
+            status=form.status.data
         )
+        db.session.add(student)
+        db.session.commit()
+        return redirect(url_for('add_student'))
 
     return render_template('add_students.html', form=form)
 

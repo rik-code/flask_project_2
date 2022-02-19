@@ -6,7 +6,7 @@ class Subjects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
 
-    student = db.relationship('Students', beckref='subject', lazy=True)
+    student = db.relationship('Students', backref='subject', lazy=True)
 
 
 class Students(db.Model):
