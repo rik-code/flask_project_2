@@ -5,25 +5,25 @@
     <h1>Add student</h1>
     <form action="" method="post">
     {{ form.hidden_tag() }}
-        <p>
-            {{ form.name.label }}
-            {{ form.name }}
-        </p>
-        <p>
-            {{ form.birth_date.label }}
-            {{ form.birth_date }}
-        </p>
-        <p>
-            {{ form.mark.label }}
-            {{ form.mark }}
-        </p>
-        <p>
-            {{ form.status.label }}
-            {{ form.status }}
-        </p>
-        <p>
-            {{ form.submit() }}
-        </p>
+        <div class="mb-2">
+            {{ form.name.label(class='form-label') }}
+            {{ form.name(class='form-control') }}
+        </div>
+        <div class="mb-2">
+            {{ form.birth_date.label(class='form-label') }}
+            {{ form.birth_date(class='form-control')  }}
+        </div>
+        <div class="mb-2">
+            {{ form.mark.label(class='form-label') }}
+            {{ form.mark(class='form-control')  }}
+        </div>
+        <div class="mb-2">
+            {{ form.status.label(class='form-label') }}
+            {{ form.status(class='form-select')  }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class='btn btn-outline-primary') }}
+        </div>
     </form>
 
 {% endblock %}
