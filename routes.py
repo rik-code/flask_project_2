@@ -29,4 +29,11 @@ def add_student():
 @app.route('/add-subject', methods=['GET', 'POST'])
 def add_subject():
     form = SubjectForm()
+    if form.validate_on_submit():
+        subj = Subjects(
+            name=form.name.data
+        )
+        db.session.add(subj)
+        db.session.commit()
+        return redirect(url_for('add_subject'))
     return render_template('add_subject.html', form=form)
