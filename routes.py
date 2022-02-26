@@ -12,6 +12,7 @@ def index():
 @app.route('/add-student', methods=['GET', 'POST'])
 def add_student():
     form = StudentForm()
+    students = Students.query.all()
     if form.validate_on_submit():
         student = Students(
             name=form.name.data,
@@ -23,7 +24,7 @@ def add_student():
         db.session.commit()
         return redirect(url_for('add_student'))
 
-    return render_template('add_students.html', form=form)
+    return render_template('add_students.html', form=form, items=students)
 
 
 @app.route('/add-subject', methods=['GET', 'POST'])
