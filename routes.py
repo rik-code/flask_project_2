@@ -62,3 +62,14 @@ def update(id):
 @app.errorhandler(404)
 def error_404(error):
     return render_template('404.html'), 404
+
+
+@app.route('/delete/<int:id>')
+def delete_student(id):
+    student = Students.query.get_or_404(id)
+    try:
+        db.session.delete(student)
+        db.session.commit()
+        return redirect(url_for('add_student'))
+    except:
+        return 'Что-то пошло не так'

@@ -44,6 +44,7 @@
                     <td>{{ student.birth_date }}</td>
                     <td>{{ student.mark }}</td>
                     <td>{{ student.status }}</td>
+                    <td><a href="/delete/{{ student.id }}" class="btn btn-danger">Delete</a></td>
                 </tr>
             {% endfor %}
         </tbody>
