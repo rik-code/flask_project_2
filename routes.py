@@ -46,14 +46,11 @@ def update(id):
     students = Students.query.get_or_404(id)
     form = StudentForm()
     if form.validate_on_submit():
-        student = Students(
-            name=form.name.data,
-            birth_date=form.birth_date.data,
-            mark=form.mark.data,
-            status=form.status.data
-        )
+        students.name = form.name.data
+        students.birth_date = form.birth_date.data
+        students.mark = form.mark.data
+        students.status = form.status.data
         try:
-            db.session.add(student)
             db.session.commit()
         except:
             return 'There was a problem updating data.'
