@@ -39,3 +39,24 @@ def add_subject():
         db.session.commit()
         return redirect(url_for('add_subject'))
     return render_template('add_subject.html', form=form, items=subjects)
+
+
+@app.route('/update-student/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    students = Students.query.get_or_404(id)
+    form = StudentForm()
+    if form.validate_on_submit():
+        student = Students(
+            name=form.name.data,
+            birth_date=form.birth_date.data,
+            mark=form.mark.data,
+            status=form.status.data
+        )
+        try:
+            db.session.add(student)
+            db.session.commit()
+        except:
+            return 'There was a problem updating data.'
+        return redirect(url_for('add_student'))
+    else:
+        return render_template('update-student.html', form=form, student=students)

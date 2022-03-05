@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Add student</h1>
+    <form action="" method="post">
+    {{ form.hidden_tag() }}
+        <div class="mb-2">
+            {{ form.name.label(class='form-label') }}
+            {{ form.name(class='form-control', value=student.name) }}
+        </div>
+        <div class="mb-2">
+            {{ form.birth_date.label(class='form-label') }}
+            {{ form.birth_date(class='form-control', value=student.birth_date)  }}
+        </div>
+        <div class="mb-2">
+            {{ form.mark.label(class='form-label') }}
+            {{ form.mark(class='form-control', value=student.mark)  }}
+        </div>
+        <div class="mb-2">
+            {{ form.status.label(class='form-label') }}
+            {{ form.status(class='form-select', value=student.status)  }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class='btn btn-outline-primary') }}
+        </div>
+    </form>
+
+{% endblock %}

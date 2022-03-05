@@ -40,7 +40,7 @@
         <tbody>
             {% for student in items %}
                 <tr>
-                    <td>{{ student.name }}</td>
+                    <td><a href="/update-student/{{ student.id }}">{{ student.name }}</a></td>
                     <td>{{ student.birth_date }}</td>
                     <td>{{ student.mark }}</td>
                     <td>{{ student.status }}</td>
