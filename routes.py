@@ -57,3 +57,8 @@ def update(id):
         return redirect(url_for('add_student'))
     else:
         return render_template('update-student.html', form=form, student=students)
+
+
+@app.errorhandler(404)
+def error_404(error):
+    return render_template('404.html'), 404

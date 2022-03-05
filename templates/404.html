@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <h1 class="text-centre">Нюхай бебру!
+        <span class="badge bg-denger"><a href="{{ url_for('index') }}">Main page</a>
+        </span></h1>
+    <img src="{{ url_for('static', filename='404-image.png') }}" alt="" width="100%">
+{% endblock %}
