@@ -10,7 +10,7 @@ class StudentForm(FlaskForm):
                            validators=[DataRequired()])
 
     mark = FloatField('Mark: ')
-    subject = SubmitField('Subject', choices=[])
+    subject = SelectField('Subject', choices=[])
     status = SelectField('Learning status',
                          choices=[
                              ('free', 'Free'),
