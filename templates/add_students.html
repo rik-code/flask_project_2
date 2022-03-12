@@ -38,6 +38,7 @@
                 <th>Name</th>
                 <th>Birth date</th>
                 <th>Mark</th>
+                <th>Subject</th>
                 <th>Pay status</th>
             </tr>
             </thead>
@@ -47,6 +48,7 @@
                     <td><a href="/update-student/{{ student.id }}">{{ student.name }}</a></td>
                     <td>{{ student.birth_date }}</td>
                     <td>{{ student.mark }}</td>
+                    <td>{{ student.subjects.name }}</td>
                     <td>{{ student.status }}</td>
                     <td><a href="/delete/{{ student.id }}" class="btn btn-danger">Delete</a></td>
                 </tr>
