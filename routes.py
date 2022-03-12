@@ -12,7 +12,7 @@ def index():
 @app.route('/add-student', methods=['GET', 'POST'])
 def add_student():
     form = StudentForm()
-    form.subject.choices = [(1, 'First'), (2, 'Second')]
+    form.subject.choices = [(subject.id, subject.name) for subject in Subjects.query.order_by(Subjects.name).all()]
     students = Students.query.order_by(Students.name).all()
     if form.validate_on_submit():
         student = Students(
