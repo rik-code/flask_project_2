@@ -1,0 +1,26 @@
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+        <div class="mb-2">
+            {{ form.name.label(class='form-label') }}
+            {{ form.name(class='form-control') }}
+        </div>
+        <div class="mb-2">
+            {{ form.birth_date.label(class='form-label') }}
+            {{ form.birth_date(class='form-control')  }}
+        </div>
+        <div class="mb-2">
+            {{ form.subject.label(class='form-label') }}
+            {{ form.subject(class='form-control')  }}
+        </div>
+        <div class="mb-3">
+            {{ form.mark.label(class='form-label') }}
+            {{ form.mark(class='form-control')  }}
+        </div>
+        <div class="mb-2">
+            {{ form.status.label(class='form-label') }}
+            {{ form.status(class='form-select')  }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class='btn btn-outline-primary') }}
+        </div>
+    </form>
