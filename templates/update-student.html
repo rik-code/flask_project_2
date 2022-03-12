@@ -11,7 +11,11 @@
         </div>
         <div class="mb-2">
             {{ form.birth_date.label(class='form-label') }}
-            {{ form.birth_date(class='form-control', value=student.birth_date)  }}
+            {{ form.birth_date(class='form-control', default=student.birth_date)  }}
+        </div>
+        <div class="mb-3">
+            {{ form.subject.label(class='form-label') }}
+            {{ form.subject(class='form-control')  }}
         </div>
         <div class="mb-2">
             {{ form.mark.label(class='form-label') }}

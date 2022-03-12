@@ -47,10 +47,12 @@ def add_subject():
 def update(id):
     students = Students.query.get_or_404(id)
     form = StudentForm()
+    form.subject.choices = [(subject.id, subject.name) for subject in Subjects.query.order_by(Subjects.name).all()]
     if form.validate_on_submit():
         students.name = form.name.data
         students.birth_date = form.birth_date.data
         students.mark = form.mark.data
+        students.subject_id = form.subject.data
         students.status = form.status.data
         try:
             db.session.commit()
