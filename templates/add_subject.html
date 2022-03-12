@@ -26,6 +26,7 @@
                 {% for subj in items %}
                     <tr>
                         <td>{{ subj.name }}</td>
+                        <td><a href="/delete-subj/{{ subj.id }}" class="btn btn-outline-danger">Delete</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -77,3 +77,13 @@ def delete_student(id):
         return redirect(url_for('add_student'))
     except:
         return 'Что-то пошло не так'
+
+@app.route('/delete-subj/<int:id>')
+def delete_subject(id):
+    subject = Subjects.query.get_or_404(id)
+    try:
+        db.session.delete(subject)
+        db.session.commit()
+        return redirect(url_for('add_subject'))
+    except:
+        return 'Что-то пошло не так'
