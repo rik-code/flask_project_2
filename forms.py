@@ -10,7 +10,7 @@ class StudentForm(FlaskForm):
                            validators=[DataRequired()])
 
     mark = FloatField('Mark: ')
-    # TODO: SelectMultipleField for subject_id field
+    subject = SubmitField('Subject', choices=[])
     status = SelectField('Learning status',
                          choices=[
                              ('free', 'Free'),
