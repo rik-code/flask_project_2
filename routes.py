@@ -19,6 +19,7 @@ def add_student():
             name=form.name.data,
             birth_date=form.birth_date.data,
             mark=form.mark.data,
+            subject_id=form.subject.data,
             status=form.status.data
         )
         db.session.add(student)
