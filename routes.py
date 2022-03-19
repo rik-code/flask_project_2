@@ -1,8 +1,12 @@
 from flask import render_template, redirect, url_for
-from app import app, db
+from app import app, db, login
 from forms import StudentForm, SubjectForm
-from models import Subjects, Students
+from models import Subjects, Students, User
 
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 @app.route('/')
 def index():
