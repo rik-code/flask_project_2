@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for
 from app import app, db, login
 from forms import StudentForm, SubjectForm
 from models import Subjects, Students, User
+from flask_login import current_user, login_user
 
 
 @login.user_loader
@@ -91,3 +92,9 @@ def delete_subject(id):
         return redirect(url_for('add_subject'))
     except:
         return 'Что-то пошло не так'
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
