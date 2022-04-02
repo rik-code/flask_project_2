@@ -2,28 +2,35 @@
 
 {% block content %}
     <form action="" method="post">
-        {{ form.hidden_tag() }}\
+        {{ form.hidden_tag() }}
         <div class="mb-3">
-            {{ form.username.lable(class="form-label") }}
+            {{ form.username.label(class="form-label") }}
             {{ form.username(class="form-control") }}
             {% for error in form.username.errors %}
                 <span style="color: #690000">{{ error }}</span>
-            {% endof %}
+            {% endfor %}
         </div>
         <div class="mb-3">
-            {{ form.email.lable(class="form-label") }}
+            {{ form.email.label(class="form-label") }}
             {{ form.email(class="form-control") }}
             {% for error in form.email.errors %}
                 <span style="color: #690000">{{ error }}</span>
-            {% endof %}
+            {% endfor %}
         </div>
         <div class="mb-3">
-            {{ form.password.lable(class="form-label") }}
+            {{ form.password.label(class="form-label") }}
             {{ form.password(class="form-control") }}
             {% for error in form.username.errors %}
                 <span style="color: #690000">{{ error }}</span>
-            {% endof %}</div>
-        <div class="mb-3"></div>
-        <div class="mb-3"></div>
+            {% endfor %}</div>
+        <div class="mb-3">
+            {{ form.password_again.label(class="form-label") }}
+            {{ form.password_again(class="form-control") }}
+            {% for error in form.password_again.errors %}
+                <span style="color:#620000">{{ error }}</span>
+            {% endfor %}</div>
+        <div class="mb-3">
+            {{ form.submit() }}
+        </div>
     </form>
 {% endblock %}
