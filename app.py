@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 login = LoginManager(app)
+login.login_view = 'login' # функция входа на сайт называется login
 
 from routes import *
 

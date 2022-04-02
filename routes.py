@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for
 from app import app, db, login
 from forms import StudentForm, SubjectForm, LoginForm
 from models import Subjects, Students, User
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 
 
 @login.user_loader
@@ -15,6 +15,7 @@ def index():
 
 
 @app.route('/add-student', methods=['GET', 'POST'])
+@login_required
 def add_student():
     form = StudentForm()
     form.subject.choices = [(subject.id, subject.name) for subject in Subjects.query.order_by(Subjects.name).all()]
