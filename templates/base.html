@@ -22,6 +22,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('add_subject') }}">Add subject</a>
                 </li>
+                <li class="nav-item">
+                    {% if current_user.is_anonymous %}  <!-- если пользователь не вошел -->
+                        <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                    {% else %}
+                        <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                    {% endif %}
+                </li>
             </ul>
         </div>
     </div>
