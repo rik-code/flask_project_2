@@ -32,6 +32,7 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember me')
     submit = SubmitField('Sign in')
 
+
 class RegisterForm(FlaskForm):
     username = StringField('Username:', validators=[DataRequired()])
     email = StringField('Email:', validators=[DataRequired()])
@@ -48,3 +49,9 @@ class RegisterForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email!')
+
+
+class TeacherForm(FlaskForm):
+    name = StringField('Teacher\'s name: ',
+                       validators=[DataRequired()])
+    subject = SelectField('Subject', choices=[])

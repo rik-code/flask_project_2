@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
 from app import app, db, login
-from forms import StudentForm, SubjectForm, LoginForm, RegisterForm
-from models import Subjects, Students, User
+from forms import StudentForm, SubjectForm, LoginForm, RegisterForm, TeacherForm
+from models import Subjects, Students, User, Teachers
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -36,6 +36,7 @@ def add_student():
 
 
 @app.route('/add-subject', methods=['GET', 'POST'])
+@login_required
 def add_subject():
     form = SubjectForm()
     subjects = Subjects.query.order_by(Subjects.name).all()
@@ -125,3 +126,23 @@ def register():
         db.session.commit()
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
+@app.route('/timetable')
+def timetable():
+    return render_template('timetable.html')
+
+
+@app.route('/add-teacher', methods=['GET', 'POST'])
+@login_required
+def add_teacher():
+    form = TeacherForm()
+    form.subject.choices = [(subject.id, subject.name) for subject in Subjects.query.order_by(Subjects.name).all()]
+    teacher_list = Teachers.query.order_by(Teachers.name).all()
+    if form.validate_on_submit():
+        teacher = Teachers(
+            name=form.name.data,
+            subject_id=form.subject.data
+        )
+        db.session.add(teacher)
+        db.session.commit()
+    return render_template('add_teacher.html', form=form, items=teacher_list)

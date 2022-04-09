@@ -31,3 +31,9 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+
+class Teachers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), index=True)
+    subj_id = db.relationship('Subjects', backref='teachers', lazy=True)
