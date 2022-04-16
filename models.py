@@ -8,6 +8,7 @@ class Subjects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
 
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.id'))
     student = db.relationship('Students', backref='subjects', lazy=True)
 
 
