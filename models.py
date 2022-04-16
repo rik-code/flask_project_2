@@ -9,6 +9,7 @@ class Subjects(db.Model):
     name = db.Column(db.String(80), nullable=False)
 
     teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.id'))
+    lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
     student = db.relationship('Students', backref='subjects', lazy=True)
 
 
@@ -38,3 +39,13 @@ class Teachers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), index=True)
     subj_id = db.relationship('Subjects', backref='teachers', lazy=True)
+    lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
+
+
+class Lessons(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.Date, default=datetime.now())
+    time = db.Column(db.Time, default=datetime.now())
+
+    teacher_id = db.relationship('Teachers', beckref='lessons', lazy=True)
+    subj_id = db.relationship('Subjects', beckref='lessons', lazy=True)
