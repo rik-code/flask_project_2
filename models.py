@@ -47,5 +47,5 @@ class Lessons(db.Model):
     date = db.Column(db.Date, default=datetime.now())
     time = db.Column(db.Time, default=datetime.now())
 
-    teacher_id = db.relationship('Teachers', beckref='lessons', lazy=True)
-    subj_id = db.relationship('Subjects', beckref='lessons', lazy=True)
+    teacher_id = db.relationship('Teachers', backref='lessons', lazy=True)
+    subj_id = db.relationship('Subjects', backref='lessons', lazy=True)
